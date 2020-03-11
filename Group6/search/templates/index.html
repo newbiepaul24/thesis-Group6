@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '../static/css/index.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class = "main_header" id = "main_header">
+        <!-- <h1 class = "main_logo">Group 6</h1> -->
+        <h1 class = main_title>Title</h1>
+    </header>
+
+            <!-- SEARCH BAR -->
+
+    <section class = "search_bar" id ="search_bar">
+        <h1 class = "search_bar-h1">Find a Grave</h1>
+
+        <form action="" class = "main_form">
+            <input type="text" id = "fname" placeholder="First Name">
+            <input type="text" id = "lname" placeholder="Last Names">
+            <input type="button" name = "searchButton" value ="Start your Search" onclick="searched()">
+        </form>
+    </section>
+
+    <section>
+ <script type="text/javascript">
+    function searched(){
+      firstName = document.getElementById('fname').value;
+      lastName = document.getElementById('lname').value;
+      {% for names in name %}
+        {% if forloop.first %}
+          if ("{{ names.First }}" == firstName && "{{ names.Last }}" == lastName) {
+            document.getElementById('dis').innerHTML = "Name: {{ names.First }} {{ names.Last }}<br> Year: {{ names.YearDate }}<br> Grave Keeper: {{ names.GraveKeeper }}";
+          }
+
+       {% else %}
+
+        else if ("{{ names.First }}" == firstName && "{{ names.Last }}" == lastName){
+            document.getElementById('dis').innerHTML = "Name: {{ names.First }} {{ names.Last }}<br> Year: {{ names.YearDate }}<br> Grave Keeper: {{ names.GraveKeeper }}";
+          }
+
+
+
+
+
+        {% endif %}
+      {% endfor %}
+      {% if name %}
+        else {
+          document.getElementById('dis').innerHTML = "none";
+        }
+      {% endif %}
+    }
+</script>
+
+    	<h1 id = "dis">test</h1>
+
+    </section>
+
+    <section class = "miniMap" id = "miniMap">
+        <table class = "main_table">
+            <tr id = "row1">
+                <td id = row1d1>1</td>
+                <td id = row1d2>2</td>
+                <td id = row1d3>3</td>
+                <td id = row1d4>4</td>
+                <td id = row1d5>5</td>
+                <td id = row1d6>6</td>
+                <td id = row1d7>7</td>
+                <td id = row1d8>8</td>
+                <td id = row1d9>9</td>
+                <td id = row1d10>10</td>
+            </tr>
+        </table>
+<br>
+        <table class = "main_table">
+          <tr id = "row2">
+              <td id = row2d1>1</td>
+              <td id = row2d2>2</td>
+              <td id = row2d3>3</td>
+              <td id = row2d4>4</td>
+              <td id = row2d5>5</td>
+              <td id = row2d6>6</td>
+              <td id = row2d7>7</td>
+              <td id = row2d8>8</td>
+              <td id = row2d9>9</td>
+              <td id = row2d10>10</td>
+          </tr>
+      </table>
+<br>
+      <table class = "main_table">
+        <tr id = "row3">
+            <td id = row3d1>1</td>
+            <td id = row3d2>2</td>
+            <td id = row3d3>3</td>
+            <td id = row3d4>4</td>
+            <td id = row3d5>5</td>
+            <td id = row3d6>6</td>
+            <td id = row3d7>7</td>
+            <td id = row3d8>8</td>
+            <td id = row3d9>9</td>
+            <td id = row3d10>10</td>
+        </tr>
+      </table>
+    </section>
+
+
+
+</body>
+</html>
